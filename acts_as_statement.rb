@@ -8,6 +8,27 @@ require 'rdf/ntriples'
 module ActiveRecord
   module Acts
     module Statement
+      module VERSION
+        MAJOR = 0
+        MINOR = 0
+        TINY = 1
+        EXTRA = nil
+
+        STRING = [MAJOR, MINOR, TINY, EXTRA].compact.join('.')
+
+        ##
+        # @return [String]
+        def self.to_s() STRING end
+
+        ##
+        # @return [String]
+        def self.to_str() STRING end
+
+        ##
+        # @return [Array(Integer, Integer, Integer)]
+        def self.to_a() [MAJOR, MINOR, TINY] end
+      end
+      
       def self.included(base)
         base.send(:extend, ActiveRecord::Acts::Statement::ClassMethods)
       end
